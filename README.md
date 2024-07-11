@@ -1,4 +1,4 @@
-# watsonxChallenge
+# 2024 IBM watsonx Challenge
 
 # Insurance Liability Simulation
 
@@ -45,9 +45,6 @@ This repository contains a Python script for simulating future insurance liabili
 
 1. Navigate to the project directory:
 
-    ```sh
-    cd ~/coding_projects/watsonxChallenge
-    ```
 
 2. Run the simulation script:
 
@@ -70,8 +67,8 @@ The script includes the following functions:
 
 ## License
 
-This project is for demonstration purposes and does not include a specific license.
+This project is for watsonx challenge demonstration purposes and does not include a specific license.
 
 ## Contact
 
-For any questions or issues, please contact [your email or GitHub username].
+For any questions or issues, please contact joehuang@ibm.com.
