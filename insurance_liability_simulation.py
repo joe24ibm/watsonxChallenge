@@ -21,16 +21,26 @@ def monte_carlo_liability_simulation(claims_df, num_simulations, num_years):
     annual_claims = claims_df.mean(axis=1)
     mean_claims = annual_claims.mean()
     std_claims = annual_claims.std()
+    
+    # Debug prints
+    print(f"Mean annual claims: {mean_claims}")
+    print(f"Standard deviation of annual claims: {std_claims}")
+    
     simulated_liabilities = np.zeros((num_years, num_simulations))
     for t in range(num_years):
         simulated_liabilities[t] = np.random.normal(mean_claims, std_claims, num_simulations)
+    
     return simulated_liabilities
 
 # Analyze simulation results
-def analyze_simulation_results(simulated_liabilities):
+def analyze_simulation_results(simulated_liabilities, threshold_liability):
     liabilities_df = pd.DataFrame(simulated_liabilities)
-    threshold_liability = 120000
     probability_above_threshold_liability = (liabilities_df > threshold_liability).mean(axis=1)
+    
+    # Debug prints
+    print(f"Simulated liabilities:\n{liabilities_df}")
+    print(f"Probability of exceeding threshold each year:\n{probability_above_threshold_liability}")
+    
     return probability_above_threshold_liability
 
 # Visualize simulation results
@@ -55,10 +65,11 @@ def main():
     
     num_simulations = 1000
     num_years = 10
+    threshold_liability = 120000  # Adjust this threshold as needed
     
     simulated_liabilities = monte_carlo_liability_simulation(claims_df, num_simulations, num_years)
     
-    probability_above_threshold_liability = analyze_simulation_results(simulated_liabilities)
+    probability_above_threshold_liability = analyze_simulation_results(simulated_liabilities, threshold_liability)
     
     visualize_simulation_results(simulated_liabilities, probability_above_threshold_liability)
     
